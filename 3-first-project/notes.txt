@@ -1,0 +1,10 @@
+- will be using vite as our build tool
+    - vite compiles our code (optomizations, cache, source mapping, local server)
+    - plugins we will use are GLSL support and React
+
+
+
+commands run: 
+    - npm init -y to initiate node
+    - npm install vite
+    - npm install threejs

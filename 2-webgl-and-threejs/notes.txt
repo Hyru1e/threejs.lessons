@@ -1,0 +1,31 @@
+- three js works with WebGL, but can make it work with svg and css (limited)
+    examples of threejs implementations:   
+                http://bruno-simon.com
+                https://cornrevolution.resn.global/ 
+                https://richardmattka.com
+                https://lusion.co
+                https://www.oculus.com/medal-of-honor/  
+                http://letsplay.ouigo.com
+                https://zen.ly
+                https://prior.co.jp/discover
+                https://www.midwam.com
+                https://heraclosgame.com 
+                https://chartogne-taillet.com
+                https://live.vanmoof.com/site
+
+
+What is WebGL
+    - javascript api
+    - render triangles quickly 
+    - results can be drawn in a `<canvas>`
+    - compatible with most modern browsers
+    - uses the (GPU) Graphic Processing Unit
+    - can be used for 2d (Pixi.js)
+    - gpu isnt as fast as cpu but can do them in parallel unlike a single core of the cpu
+    - as a simplification - imagine plotting invisible points (instructions)
+        - once the points are positioned, the gpu will draw each visible pixel calculated within those points
+        - positioning points and pixels are written in shaders
+        - there are many variables associated with the concept of shaders 
+    - Native WebGL is extremely low level which means a high level of control over memory management
+
+Three js is built on top of WebGL so there is a lot of interaction/customization available
