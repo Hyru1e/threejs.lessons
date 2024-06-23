@@ -2,9 +2,28 @@
     - vite compiles our code (optomizations, cache, source mapping, local server)
     - plugins we will use are GLSL support and React
 
+! in vs code makes a super basic html setup
 
 
 commands run: 
     - npm init -y to initiate node
     - npm install vite
     - npm install threejs
+
+
+Scenes need four basic elements:
+1. Scene - like a container in which we put objects, models, particles, lights, etc
+2. Objects - Can be many things like primitive geometries, imported modules, particles, lights, etc
+    2a. Mesh = combination of a geormetry and material (shape and look)
+    2b. MeshBasicMaterial -  `wireframe: true` can show you wireframes
+3. Camera
+    3a. needs the field of view (is vertical field of view) expressed in degrees
+    3b. aspect ratio (width/height)
+    3c. adding the camera is optional but add it to prevent bugs
+4. Renderer - The renderer will render the scene seen from the camera's point of view
+
+
+Object transformation = we can transform objects using
+1. position - x, y, z -- z is forward or backward
+2. rotation
+3. scale

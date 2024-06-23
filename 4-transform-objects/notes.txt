@@ -1,0 +1,5 @@
+four main properties we will work width 
+1. position
+2. scale
+3. rotation
+4. quaternion
