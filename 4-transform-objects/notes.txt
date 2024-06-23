@@ -36,9 +36,9 @@ scene.add(axesHelper);
 
 value provided in parenthesis is its unit size 
 
-Scale affects the objects dimensions
+Scale affects the objects dimensions - is Vector3
 
-Rotate Objects
+Rotate Objects 
 you can use rotation or quaternion 
 - updating one will update the other
 
@@ -66,3 +66,8 @@ Object3D instances have a lookAt method which rotates the object
 target must be a Vector3
 example camera.lookAt(new THREE.Vector3(3, 0, 0));
         camera.lookAt(mesh.position);
+
+
+Scene Graphs
+you can put objects inside groups
+-can use position, rotation (or quaternion), and scale on those groups

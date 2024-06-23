@@ -1,0 +1,6 @@
+Animation in three.js is like doing stop motion
+1. move the object
+2. take a picture
+3. move the object a bit more
+4. take a picture 
+5. continue the cycle
