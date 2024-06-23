@@ -8,5 +8,61 @@ All classes that inherit from the Object3D possess the properties above (ex: Per
 
 These properties are compiled in matrices and sent to the GPU
 
+Moving objects:
 
+position - has x, y, z 
+z+ = closer
+z- = farther away
+x+ = right
+x- = left
+y+ = up
+y- = down
 
+you have to do the position before the render 
+
+position is a Vector3 object
+
+position.length() = postion from center of the scene to the object (its vector)
+
+position.distanceTo(camera.position) = provides distance from different objects to each other
+
+position.normalize() = will take vector length and reduce it so its 1 (relative position is kept)
+
+AxesHelper displays a colored line for each axis (helps position things)
+Example:
+//Axes helper 
+const axesHelper = new THREE.AxesHelper(2);
+scene.add(axesHelper);
+
+value provided in parenthesis is its unit size 
+
+Scale affects the objects dimensions
+
+Rotate Objects
+you can use rotation or quaternion 
+- updating one will update the other
+
+rotation - also has x, y, and z but its a Euler
+- when you change the x,y,z properties 
+    imagine putting a stick through your objects center
+    in the axis direction and then rotating that object on that stick
+
+the value of these axes is expressed in radians. 
+Half a rotation is Pi which you can use Math.PI
+
+If youre moving one axix you can affect other axis which can result
+in movements you didn't expect (gimbal lock)
+
+how do you fix gimbal lock? 
+you can change the order
+reorder() method
+Example:
+object.rotation.reorder('YXZ');
+
+Quaternion can help in this use case 
+
+Object3D instances have a lookAt method which rotates the object
+-z will face the target you provided
+target must be a Vector3
+example camera.lookAt(new THREE.Vector3(3, 0, 0));
+        camera.lookAt(mesh.position);
