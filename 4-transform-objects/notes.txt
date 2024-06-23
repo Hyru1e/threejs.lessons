@@ -2,4 +2,11 @@ four main properties we will work width
 1. position
 2. scale
 3. rotation
-4. quaternion
+4. quaternion - similar to a rotation
+
+All classes that inherit from the Object3D possess the properties above (ex: PerspectiveCamera or Mesh)
+
+These properties are compiled in matrices and sent to the GPU
+
+
+
