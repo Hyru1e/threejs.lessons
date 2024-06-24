@@ -4,3 +4,55 @@ Animation in three.js is like doing stop motion
 3. move the object a bit more
 4. take a picture 
 5. continue the cycle
+
+- most screens run around 60fps but not always
+- we want to work for visual consistency regardless of the framerate
+
+we need to update objects and do a render on each frame
+(window.requestAnimationFrame(...))
+
+
+Request Animation Frame 
+    call the function provided on the next frame 
+
+
+Higher the frame rate the higher the rotation
+- how do we normalize / adapt to the frame rate
+    Date.now()
+
+delta time can be calulcated as follows : 
+let time = Date.now();
+
+const tick = () => {
+    //Time
+    const currentTime = Date.now();
+    const deltaTime = currentTime - time;
+    time = currentTime;
+
+    //update mesh
+    mesh.rotation.y += 0.001 * deltaTime;
+    mesh.rotation.x += 0.001 * deltaTime;
+
+    ...
+}
+
+creating deltaTime and using it to ratio by frame rate will make the experience more consistent
+
+Clock - Three.js built in solution for deltatime calculate
+for example: a single rotation per second could be 
+mesh.rotation.x = elapsedTime * Math.PI * 2;
+
+can also use wave functions
+math.position.y = Math.sin(elapsedTime);
+
+DO NOT USE getDelta becuase it can cause bugs due to interactions with elapsedTime
+
+if you want more control over Animation
+- create tweens - transition from a to b
+- create timelines - works with tweens
+- easing 
+try a library like GSAP - GreenSock
+
+npm install --save gsap 
+
+Greensock has its own tick 
