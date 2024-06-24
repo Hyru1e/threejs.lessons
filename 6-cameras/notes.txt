@@ -1,0 +1,62 @@
+Camera
+
+Camera is an abstract class for cameras
+ArrayCamera, CubeCamera, OrthographicCamera, PerspectiveCamera, StereoCamera
+
+Perspective Camera
+parameters: (field of view, aspect ratio, near, far)
+
+Field of View - vertical vision angle
+    - in degrees
+    - also called fov
+
+if you do a huge amplitude render and squeeze it into 
+a small frame then it starts distorting shapes
+recommended: 45-75
+
+Aspect Ratio - width/height 
+
+near vs far tells the camera the range of objects to render
+dont want bottom values and top values to be extreme
+- causes z-fighting (gpu can't tell which object goes in front)
+
+Orthographic Camera
+- lacks perspective
+parameters (left, right, top, bottom, near, far)
+
+example setup: 
+const aspectRatio = sizes.width / sizes.height;
+const camera = new THREE.OrthographicCamera(-1 * aspectRatio, 1 * aspectRatio, 1, -1, 0.1, 100);
+
+
+adding a camera based mousemove event
+example:
+//using size of viewport to ratio number to 1
+//subtracting by 0.5 to divide it in half -/+
+window.addEventListener('mousemove', (event) => {
+    console.log(event.clientX);
+    cursor.x = event.clientX / sizes.width - 0.5 
+    cursor.y = event.clientY / sizes.height - 0.5 
+    console.log(cursor);
+})
+
+// Update camera - creates a circle from left to right
+    //camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 2;
+    //camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 2;
+    camera.position.y = cursor.y * 5
+
+Heres where Controls come into play
+
+FlyControls, 
+FirstPersonControls, 
+PointerLockControls,
+Trackball Controls
+Orbit Controls - needs camera and DOM element (can use canvas)
+
+Transform Controls (object interactions)
+- can controls.target.y sets initial position
+- need to controls.update()
+
+Damping
+smooths things out
+-- will require controls.update() for each frame
