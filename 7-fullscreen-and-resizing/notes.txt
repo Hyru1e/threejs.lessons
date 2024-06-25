@@ -1,0 +1,22 @@
+pixel ratio 
+-- sometimes weird renders can be because of 
+    pixel ratios > 1 
+
+    pixel ratio corresponds to how many physical pixels you have on the screen
+    to how many you need for the software 
+
+traditionally all screens had a pixel ratio of 1
+
+constructors like apple saw an opportunity and started
+building screens with pixel ratio of 2
+
+now some hardware can have pixel ratios of 3+
+
+a pixel ratio of 2 means 4 times more pixels to render
+a pixel ratio of 3 means 9 times more pixels to render
+highest pixel ratios are usually on the weakest devices
+    -mobile
+
+renderer.setPixelRatio(window.devicePixelRatio)
+- high pixel ratios can cause too many renders so we cap it at 2
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
