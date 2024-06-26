@@ -1,0 +1,75 @@
+what is a geometry
+- a geometry is composed of vertices 
+- vertices are coordinates in space
+- can use geometry to create partice
+    - particle for each vertices
+    - each vertex will have 
+        - position 
+        - UV coordinates
+        - normal
+        -...etc (think of it as a node)
+    
+Built in geometry 
+- come from BufferGeometry
+
+1. BoxGeometry
+2. PlaneGeometry
+3. CircleGeometry
+4. ConeGeometry
+5. CylinderGeometry
+6. RingGeometry
+7. TorusGeometry
+8. TorusKnotGeometry - good for testing light
+9. DodecahedronGeometry
+10. OctahedronGeometry
+11. TetrahedronGeometry
+12. IcosahedronGeometry
+13. SphereGeometry
+14. ShapeGeometry - based on curves
+15. TubeGeometry
+16. ExtrudeGeometry
+17. LatheGeometry
+18. TextGeometry
+
+Parameters
+width : size of x axis
+height : size of y axis 
+depth : size on z axis 
+widthSegments: how many subdivisions on x axis
+heightSegments: subdivisions on y axis
+depthSegments: subdivisions on z axis 
+
+BufferGeometry data
+Float32Array - native js
+- typed array - can only store one type of value (duh lol)
+- can only store floats
+- fixed length - no resizing (duh x2)
+- easier to handle for the computer 
+1D array
+
+
+const positionArray = new Float32Array([
+    0,0,0
+    0,1,0
+    1,0,0
+])
+
+is the same as 
+const positionsArray = new Float32Array(9);
+//vertex1
+positionsArray[0] = 0;
+positionsArray[1] = 0;
+positionsArray[2] = 0;
+//vertex2
+positionsArray[3] = 0;
+positionsArray[4] = 1;
+positionsArray[5] = 0;
+//vertex3
+positionsArray[6] = 1;
+positionsArray[7] = 1;
+positionsArray[8] = 0;
+
+
+const positionsAttribute = new THREE.BufferAttribute(positionArray, 3)
+position const provides coordinates, 
+second value (3) tells how many each vertice takes
