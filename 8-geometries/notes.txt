@@ -73,3 +73,29 @@ positionsArray[8] = 0;
 const positionsAttribute = new THREE.BufferAttribute(positionArray, 3)
 position const provides coordinates, 
 second value (3) tells how many each vertice takes
+
+add positions attribute to geometry
+geometry.setAttribute('position', positionsAttribute);
+'position' is what is sent to the shaders
+
+faces were generated dynamically
+
+iteration of code removed:
+const positionArray = new Float32Array([
+    0,0,0,
+    0,1,0,
+    1,0,0
+])
+
+const positionsAttribute = new THREE.BufferAttribute(positionArray, 3)
+
+
+geometry.setAttribute('position', positionsAttribute);
+
+
+Index
+some geometry have faces that share vertices 
+ex: cube 
+when creating a BufferGeometry we can specify a bunch of vertices
+and then the indices to create the faces and re-use vertices multiple times
+- potentially a place where we can reduce gpu load 
