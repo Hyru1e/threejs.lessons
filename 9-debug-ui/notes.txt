@@ -8,3 +8,18 @@ some debug uis
 6. tweakpane
 7. guify
 8. oui
+
+Different types of tweaks
+- range
+- color
+- text 
+- checkbox
+- button
+
+gui.add(object, property of that object)
+
+when using gui.addColor 
+- the gui color calculated is different from the displayed color
+threejs uses color management to optimize color rendering
+
+- can call getHexString on color instance to get the color threejs is using
