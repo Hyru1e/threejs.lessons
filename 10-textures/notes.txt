@@ -1,0 +1,138 @@
+What are textures?
+-images that will cover the entire surface of the geometries 
+-many types with many different effects
+    - we will experiment with common types of textures 
+        using door textures by João Paulo 
+
+Displacement textures
+- shifts the pixels and can add dimension
+
+Color (albedo)
+it will take the pixels of the texture and apply them to the geometry
+
+Alpha
+a grayscale image where white will be visible and black wont
+
+Height 
+the height texture is a grayscale image that will move the vertices to create some relief
+you'll need to add subdivision if you want to see it
+
+Normal
+- add details
+doesnt need subdivision 
+the vertices wont move
+lure the light about the face orientation
+better performances than adding a height with a lot of subdivision
+
+Ambient Occlusion
+grayscale image 
+add fake shadows in crevices
+not physically accurate
+helps create the contrast and see details
+
+Metalness
+grayscale image
+white is metallic
+black is non metallic
+mostly for reflection
+
+Roughness
+grayscale image
+in duo with the metalness
+white is rough 
+black is smooth
+mostly for light dissipation
+
+The textures (especially metalness and roughness follow PBR)
+PBR - physcially based rendering
+many technics that tend to follow real-life directsion to get realistic results
+becoming the standard for realistic renders
+many software, engines, and libraries are using it 
+
+https://marmoset.co/posts/basic-theory-of-physically-based-rendering/
+https://marmoset.co/posts/physically-based-rendering-and-you-can-too/
+
+How to load textures 
+one texture loader can load multiple textures
+
+- can provide three functions 
+load - when the image loaded successfully
+progress - while in progress
+error - if something went wrong
+
+
+LoadingManager
+to mutualize events 
+its useful to have a global loading tracker or be informed when everything is loaded
+
+UV unwrapping
+- flattening texture
+- each vertex will have 2d coordinates
+we can see those UV coordinates in geometry.attributes.uv
+
+if you create your own geometry you'll have to specify the uv coordinates
+even using a 3D software
+
+Transforming textures
+repeate property
+-Vector2
+RepeateWrapping vs MirroredRepeateWrapping
+(wrapS values vs wrapT values = 1000 instead of 1002)
+
+current solution for updating offset dynamically is using a instanced buffer
+with an indices of texture chunks or with pre computed UVs per instance
+
+Rotation calculations
+Math.PI = 1/2 rotation
+Math.PI * 2 = full rotation
+
+Filtering and Mipmapping
+
+Mipmapping
+recursively creating half a smaller version of a texture until we get a 1x1 texture
+
+minification filter - when the pixels of the texture are smaller than the pixels of the render
+- in other words the texture is too big for the surface it covers 
+
+can change how those pixels are getting fetched using the minFilter property
+- NearestFilter
+- LinearFilter
+- NearestMipmapNearestFilter
+- NearestMipmapLinearFilter
+- LinearMipmapNearestFilter
+- LinearMipmapLinearFilter
+
+when pixels get too small you get moiré patterns
+
+sharpens small images when they are stretched
+colorTexture.magFilter = THREE.NearestFilter;
+
+nearest filter improves frame rate
+if using NearestFilter for minfilter then we can deactivate minmapping 
+    - improves performance
+
+-smaller textures on gpu is better
+
+Texture format and optimization
+- when using them we need to consider three things
+    - the weight
+        - users will have to download the textures (choose right type of file)
+        -jpg - lossy compression but usually lighter
+        -png - lossless compression but usually heavier
+            -can use compression websites and softwares like tinyPNG
+    - the size - resolution
+        - each pixel of the textures will have to be stored on the gpu regardless of the images weight
+        -gpu has storage limitations
+        - note mipmapping increases the number of pixels to store
+
+textures support transparency in jpg
+- if we want to have only one texture that combine color and alpha we have to use png
+    
+normal texture you need exact coordinates of pixels
+- should use png becuase we dont want lossy compression
+
+where to find textures
+- poligon.com
+- 3dtextures.me
+- arroway-textures.ch 
+-substance designer 
