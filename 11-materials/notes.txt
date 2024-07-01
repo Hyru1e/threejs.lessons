@@ -1,0 +1,91 @@
+materials are used to put a color on each visible pixel of the geometries
+
+algorithms that decide on the color of each pixel are written in programs called shaders
+
+threejs has many built in materials with pre made shaders
+
+textures used as map and matcap are supposed to be encoded in sRGB
+
+
+const sphereMaterial = new THREE.MeshBasicMaterial({ map: doorColorTexture })
+can also be 
+const sphereMaterial = new THREE.MeshBasicMaterial({})
+sphereMaterial.map = doorColorTexture
+
+colors can tint the map
+can still use wireframes with materials
+
+if you set alpha properties like 
+material.opacity you must also set material.transparent = true
+material.alphaMap can be how you add alpha maps
+
+mesh normal material renders "normals"
+- used for things like- calculating how to illuminate the face
+- how the environment should reflect or refract on the geometries surface
+- color will display the normal orientation relative to the camera
+
+
+MeshMatcapMaterial
+optimizes performance
+needs a reference texture that looks like a sphere
+relative to the camera
+
+https://github.com/nidorx/matcaps
+
+or create your matcaps
+
+can also use online tools like 
+kchapelier.com/matcap-studio/
+
+example materials: 
+//shared material
+//const material = new THREE.MeshNormalMaterial()
+//material.side = THREE.DoubleSide
+//material.flatShading = true
+/*
+const material = new THREE.MeshMatcapMaterial()
+material.side = THREE.DoubleSide
+material.matcap = matcapTexture8
+*/
+
+
+meshlambertmaterial requires light
+- most performant 
+- hard to make it realistic 
+const material = new THREE.MeshLambertMaterial()
+
+
+
+
+const material = new THREE.MeshPhongMaterial()
+material.side = THREE.DoubleSide
+material.shininess = 100
+material.specular = new THREE.Color(0x1188ff)
+parameters are not realistic 
+
+
+meshtoonmaterial
+default is two part coloration
+can send a custom gradienttexture on the gradientmap
+const material = new THREE.MeshToonMaterial()
+material.gradientMap = gradientTexture5
+material.gradientMap.generateMipmaps = false;
+material.gradientMap.minFilter = THREE.NearestFilter
+material.gradientMap.magFilter = THREE.NearestFilter
+
+
+uses physically based rendering principles 
+supports lights but with a more realistic algorithm and better parameters 
+- roughness
+-metalness
+- called standard because PBR is so common 
+
+env map is also compatible meshlambertmaterial and MeshPhongMaterial
+
+
+ior is index of refraction
+diamond = 2.417
+water = 1.333
+air = 0.000293
+
+index on wikipedia for these values 
