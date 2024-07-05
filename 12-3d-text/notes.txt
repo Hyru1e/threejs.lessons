@@ -1,0 +1,36 @@
+facetype.js will generate typeface converters
+
+
+.node_modules
+examples
+fonts in threejs for three js fonts
+
+import typefaceFon from 'three/examples/helvetikar_regural.typeface.json'
+
+
+text is expensive how do we optimize it?
+-lower curve segments
+
+
+Bounding 
+bounding is info associated with the geometry that tells what space is taken by that geometry 
+we can have box or sphere bounding 
+- sphere bounding is default 
+textGeometry.computeBoundingBox(); = makes textGeometry.boundingBox available
+bevelsize and thickness affect bounding box calculations 
+
+EX: 
+  textGeometry.computeBoundingBox();
+  textGeometry.translate(
+    - (textGeometry.boundingBox.max.x - 0.02) * 0.5,
+    - (textGeometry.boundingBox.max.y - 0.02) * 0.5,
+    - (textGeometry.boundingBox.max.z - 0.03)  * 0.5
+  )
+
+the above can be done using textGeometry.center()
+
+
+
+frustum culling
+- rendering or not rendering an object 
+
