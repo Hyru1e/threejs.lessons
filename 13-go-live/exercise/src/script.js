@@ -12,7 +12,7 @@ const gui = new GUI();
 const textFolder = gui.addFolder("Text").close();
 
 const sceneVariables = {
-  text: "Hyru1ean",
+  text: "@Hyru1ean",
   size: 0.5,
   depth: 0.2,
   donuts: 1500,
@@ -32,6 +32,7 @@ const textureLoader = new THREE.TextureLoader();
 const matcapTexture = textureLoader.load("textures/matcaps/9.png");
 const matcapTexture2 = textureLoader.load("textures/matcaps/10.png");
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
+
 // Material
 const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
 const material2 = new THREE.MeshMatcapMaterial({ matcap: matcapTexture2 });
