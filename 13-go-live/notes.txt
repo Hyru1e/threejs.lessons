@@ -1,0 +1,13 @@
+traditional build
+- OVH,1and1 or Gandhi where you upload the files manually by using an FTP client
+
+steps 
+1. create a production build - in this case we use vite
+2. these files will live under the dist 
+
+- we will use Vercel in this case though / more modern solution 
+    - continuous integration 
+    - dev friendly
+    - easy setup
+
+can also use netlify and github pages
