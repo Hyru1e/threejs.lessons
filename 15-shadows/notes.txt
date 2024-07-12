@@ -1,0 +1,3 @@
+-the shadow on the back of objects are called core shadows
+
+- we are missing drop shadows

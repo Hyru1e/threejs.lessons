@@ -1,0 +1,51 @@
+meshstandard material needs light
+
+Ambient light
+(color, intensity)
+    -omnidirectional lighting 
+
+you can also set the parameters after
+ambientLight.color
+or 
+ambientLight.intensity
+
+we can use ambient light to simulate light bouncing
+
+-by using a regular light and create a smaller dimmer light coming from under the objects 
+
+
+hemisphere light
+you have a sky light and a ground light 
+- good for lighting objects 
+
+
+point light 
+- infinitely small point and it lights in all directions 
+
+rect area light
+like a photo shoot/having a plane illuminating in a directions
+only works with meshstandard material and meshphysicalmaterial 
+
+spotlight
+- spotlight .target retrieves a 3d object
+you cant adjust that object until you add the object to the scene
+
+lights can be expensive performance wise
+- minimal cost lights  
+    - ambient
+    -hemisphere
+moderate cost   
+    -directional light
+    -point light
+high cost
+-spotlight
+-rectarealight
+
+Baking
+- you can bake light into the texture usually recommended to use through 3d software
+    - shadows are added into the texture
+- drawbacks are you cannot move the light
+
+helpers 
+- help us manage positioning of the lights 
+- visual aid to see where lights have been placed 
