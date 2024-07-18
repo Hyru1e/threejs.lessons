@@ -1,3 +1,50 @@
 -the shadow on the back of objects are called core shadows
 
-- we are missing drop shadows
+- we are missing drop shadows - shadows that fall onto other objects/planes
+
+shadows are a challenging issue because theyre heavy
+
+
+you need at least 60 renders per second 
+
+threejs has built in solutions 
+
+how does it work?
+- when you do one render threejs will do a render for each light supporting shadows
+during these lights renders a meshdepthmaterial replaces all meshes materials
+
+the lights renders are stored as textures and we call those shadow maps
+shadow maps are then used on every materials shadows
+
+each light will have a shadow map and that will inform the color of the scene
+
+to activate shadow check you renderer
+
+items can recieve shadow and cast shadow
+.castShadow = true 
+.recieveShadow = true 
+
+lighting also have these settings
+
+how do we optimize the shadow / reduce pixelation 
+shadow map has a width and height
+
+directionalLight.shadow.mapSize.height = 1024 
+directionalLight.shadow.mapSize.width = 1024 
+*USE POWER OF TWO - mipmapping 
+
+
+directionalLight.shadow.camera = othrographic camera
+
+
+shadow map algorithm
+
+BasicShadowMap - bad quality
+PCFShadowMap - less performant but smoother edges
+PCFSoftShadowMap - least performant but even softer edges
+VSMShadowMap - less performant more constraints can have unexpected results
+
+spotlight shadow camera = perspective camera
+
+pointlight shadow camera = perspective camera
+- will need 6 renders in each direction (360 lighting)
